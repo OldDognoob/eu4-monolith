@@ -7,18 +7,19 @@ function getBaseURL() {
     : ''
 }
 function App() {
-  const [message, setMessage] = useState('')
+  const [greeting, setGreeting] = useState('')
   useEffect(() => {
-    fetch(getBaseURL() + '/api')
+    fetch(getBaseURL() + '/api/welcome?name=myEmperor')
       .then(res => res.json())
-      .then(data => {
-        setMessage(data.message)
+      .then(greeting=> {
+        setGreeting(greeting.message)
       })
   }, [])
   return (
     <div className="App">
+      <h1>Hosted might Emperor on heroku </h1>
       <header className="App-header">
-        { message }
+        { greeting}
       </header>
     </div>
   );
